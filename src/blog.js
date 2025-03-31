@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Autorization } from "./pages";
+import { Autorization, Registration } from "./pages";
 import styled from "styled-components";
 import { Header, Footer } from "./components";
 
@@ -30,7 +30,7 @@ export const Blog = () => {
           <Route path="/post" element={<div>статья</div>} />
           <Route path="/post/:postId" element={<div>новая статья</div>} />
           <Route path="/login" element={<Autorization />} />
-          <Route path="/register" element={<div>регитрация</div>} />
+          <Route path="/register" element={<Registration />} />
           <Route path="/users" element={<div>пользователи</div>} />
           <Route path="*" element={<div>Ошибка</div>} />
         </Routes>

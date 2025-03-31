@@ -1,4 +1,5 @@
-import {genedateDate} from './index'
+import { genedateDate } from "./index";
+
 export const addUser = (login, password) =>
   fetch("http://localhost:3005/users", {
     method: "POST",
@@ -9,4 +10,4 @@ export const addUser = (login, password) =>
       registed_at: genedateDate(),
       role_id: 2,
     }),
-  });
+  }).then((createdUser) => createdUser.json());
