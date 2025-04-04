@@ -3,65 +3,16 @@
     {
       "id": "001",
       "login": "anton",
-      "password": "qwerty123",
+      "password": "qwe123",
       "registed_at": "2025-05-21",
-      "role_id": "123"
+      "role_id": 0
     },
     {
       "id": "c217",
       "login": "lenakokareva",
       "password": "qwe123",
       "registed_at": "1970-01-26 10:05",
-      "role_id": 2
-    },
-    {
-      "id": "46c5",
-      "login": "qwe",
-      "password": "qwe",
-      "registed_at": "1970-01-31 18:46",
-      "role_id": 2
-    },
-    {
-      "id": "91c0",
-      "login": "asd",
-      "password": "qwe",
-      "registed_at": "1970-01-26 12:14",
-      "role_id": 2
-    },
-    {
-      "id": "44ad",
-      "login": "ivan",
-      "password": "qwerty",
-      "registed_at": "1970-02-03 19:01",
-      "role_id": 2
-    },
-    {
-      "id": "10c7",
-      "login": "kot",
-      "password": "123",
-      "registed_at": "1970-01-29 15:17",
-      "role_id": 2
-    },
-    {
-      "id": "16df",
-      "login": "log",
-      "password": "123",
-      "registed_at": "1970-02-01 10:05",
-      "role_id": 2
-    },
-    {
-      "id": "d08b",
-      "login": "ivan2",
-      "password": "qwe",
-      "registed_at": "1970-02-03 13:57",
-      "role_id": 2
-    },
-    {
-      "id": "058a",
-      "login": "ivan3",
-      "password": "qwe123",
-      "registed_at": "1970-01-26 16:40",
-      "role_id": 2
+      "role_id": 1
     }
   ],
   "roles": [

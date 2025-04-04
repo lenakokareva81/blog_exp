@@ -1,6 +1,6 @@
-export * from "./get-users";
-export * from "./generate-date";
-export * from "./get-user";
-export * from "./add-user";
-export * from "./create-session";
+export * from "./api/get-users";
+export * from "./utils/generate-date";
+export * from "./api/get-user";
+export * from "./api/add-user";
+
 export * from "./server";
