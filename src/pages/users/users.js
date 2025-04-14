@@ -47,7 +47,7 @@ const UsersContainer = ({ className }) => {
           <div className="register-at-column">дата регистрации</div>
           <div className="role-column">роль</div>
         </TableRow>
-        {console.log(users)}
+
         {users.map(({ id, login, registeredAt, roleId }) => (
           <UserRow
             key={id}
