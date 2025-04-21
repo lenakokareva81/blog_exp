@@ -1,44 +1,33 @@
 import styled from "styled-components";
 import { Icon } from "../../../../components";
+import { SpecialPanel } from "../special-panel/special-panel";
+import { useNavigate } from "react-router-dom";
 
 const PostContentContainer = ({
   className,
   post: { id, title, imageUrl, content, registeredAt },
 }) => {
+  const navigate = useNavigate();
   return (
     <div className={className}>
       <img src={imageUrl} alt={title} />
       <h2>{title}</h2>
-      <div className="special-panel">
-        <div className="published-at">
-          {/* <div onClick={() => onRoleSave(userId, selectedRoleId)}> */}
-          <Icon
-            id="fa fa-calendar-o"
-            size="18px"
-            margin="0 10px 0 10px"
-            // disabled={isSaveButtonSelected}
-          />
-          {/* </div> */}
-          {registeredAt}
-        </div>
+      <SpecialPanel
+        registeredAt={registeredAt}
+        margin="-10px 0 20px 0"
+        editButton={
+          <div onClick={() => navigate(`/post/${id}/edit`)}>
+            <Icon
+              id="fa-pencil-square-o"
+              size="20px"
+              margin="0 px 0 0px"
 
-        <div className="buttons-panel">
-          <Icon
-            id="fa fa-trash-o"
-            size="18px"
-            margin="0 5px 0 0px"
+              // disabled={isSaveButtonSelected}
+            />
+          </div>
+        }
+      />
 
-            // disabled={isSaveButtonSelected}
-          />
-          <Icon
-            id="fa fa-pencil-square-o"
-            size="20px"
-            margin="0 px 0 0px"
-
-            // disabled={isSaveButtonSelected}
-          />
-        </div>
-      </div>
       <div>{content}</div>
     </div>
   );

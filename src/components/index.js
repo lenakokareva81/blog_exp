@@ -6,3 +6,4 @@ export * from "./button/button";
 export * from "./authError/auth-error";
 export * from "./h4/h4";
 export * from "./content/content";
+export * from "./modal/modal";

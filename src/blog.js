@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { Autorization, Registration, Users, Post } from "./pages";
 import styled from "styled-components";
-import { Header, Footer } from "./components";
+import { Header, Footer, Modal } from "./components";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions";
 
-// json-server --watch src/db.json --port 3005
+//json-server --watch src/db.json --port 3005
 
 const AppColumn = styled.div`
   display: flex;
@@ -45,12 +45,14 @@ export const Blog = () => {
           <Route path="/" element={<div>главная страница</div>} />
           <Route path="/post" element={<div>новая статья</div>} />
           <Route path="/post/:id" element={<Post />} />
+          <Route path="/post/:id/edit" element={<Post />} />
           <Route path="/login" element={<Autorization />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/users" element={<Users />} />
           <Route path="*" element={<div>Ошибка</div>} />
         </Routes>
       </Page>
+      <Modal />
       <Footer />
     </AppColumn>
   );

@@ -1,20 +1,20 @@
-import { addComment, getComments, getPost } from "../api";
+import { deleteComment, getComments, getPost } from "../api";
 import { sessions } from "../sessions";
 import { ROLE } from "../constans";
 
-export const addPostComment = async (hash, userId, postId, content) => {
+export const removePostComment = async (hash, postId, id) => {
   const accessRoles = [ROLE.ADMIN, ROLE.MODERATOR, ROLE.READER];
 
-  const acsess = await sessions.access(hash, accessRoles);
-
-  if (!acsess) {
+  const access = await sessions.access(hash, accessRoles);
+  console.log(access);
+  if (!access) {
     return {
       error: "доступ запрещен",
       res: null,
     };
   }
 
-  await addComment(userId, postId, content);
+  await deleteComment(id);
   const post = await getPost(postId);
   const comments = await getComments(postId);
 

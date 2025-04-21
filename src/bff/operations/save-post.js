@@ -1,9 +1,11 @@
-import { sessions } from "../sessions";
-import { getRoles } from "../api";
+import { setUserRole } from "../api";
+import { updatePost } from "../api/update-post";
 import { ROLE } from "../constans";
+import { sessions } from "../sessions";
 
-export const fetchRoles = async (hash) => {
+export const savePost = async (hash, newPostData) => {
   const accessRoles = [ROLE.ADMIN];
+
   const acsess = await sessions.access(hash, accessRoles);
 
   if (!acsess) {
@@ -13,10 +15,10 @@ export const fetchRoles = async (hash) => {
     };
   }
 
-  const roles = await getRoles();
+  const updatedPost = await updatePost(newPostData);
 
   return {
     error: null,
-    res: roles,
+    res: updatedPost,
   };
 };
