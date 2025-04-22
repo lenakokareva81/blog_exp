@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Icon, Input } from "../../../../components";
 import { SpecialPanel } from "../special-panel/special-panel";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { sanitizeContent } from "./utils";
 import { useDispatch } from "react-redux";
 import { savePostAsync } from "../../../../actions";
@@ -13,48 +13,60 @@ const PostFormContainer = ({
   post: { id, title, imageUrl, content, registeredAt },
 }) => {
   const dispatch = useDispatch();
-  const imageRef = useRef(null);
-  const titleRef = useRef(null);
+
   const contentRef = useRef(null);
   const navigate = useNavigate();
   const requestServer = useServerRequest();
 
+  const [imageUrlValue, setimageUrlValue] = useState(imageUrl);
+  const [titleValue, setTilelValue] = useState(title);
+
+  const onImageChange = ({ target }) => setimageUrlValue(target.value);
+  const onTitleChange = ({ target }) => setTilelValue(target.value);
+
+  useLayoutEffect(() => {
+    setimageUrlValue(imageUrl);
+    setTilelValue(title);
+  }, [title, imageUrl]);
+
   const onSave = () => {
-    const newImageUrl = imageRef.current.value;
-    const newTitle = titleRef.current.value;
     const newContent = sanitizeContent(contentRef.current.innerHTML);
 
     dispatch(
       savePostAsync(requestServer, {
         id: id,
-        imageUrl: newImageUrl,
-        title: newTitle,
+        imageUrl: imageUrlValue,
+        title: titleValue,
         content: newContent,
       })
-    ).then(() => navigate(`/post/${id}`));
+    ).then(({ id }) => navigate(`/post/${id}`));
   };
 
   return (
     <div className={className}>
       <Input
-        ref={imageRef}
-        defaultValue={imageUrl}
+        value={imageUrlValue}
         placeholder="..изображение"
+        onChange={onImageChange}
       />
-      <Input ref={titleRef} defaultValue={title} placeholder="...заголовок" />
+      <Input
+        value={titleValue}
+        placeholder="...заголовок"
+        onChange={onTitleChange}
+      />
       <SpecialPanel
         registeredAt={registeredAt}
         margin="20px 0 20px 0"
+        id={id}
         editButton={
-          <div onClick={onSave}>
-            <Icon
-              id="fa fa-floppy-o"
-              size="20px"
-              margin="0 px 0 0px"
+          <Icon
+            id="fa fa-floppy-o"
+            size="20px"
+            margin="0 px 0 0px"
+            onClick={onSave}
 
-              // disabled={isSaveButtonSelected}
-            />
-          </div>
+            // disabled={isSaveButtonSelected}
+          />
         }
       />
       <div
@@ -82,5 +94,7 @@ export const PostForm = styled(PostFormContainer)`
   }
         & .post-text{
         padding:20px;
+        min-height: 80px;
+    border: 1px solid black;
         }
 `;

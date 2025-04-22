@@ -15,16 +15,16 @@ const PostContentContainer = ({
       <SpecialPanel
         registeredAt={registeredAt}
         margin="-10px 0 20px 0"
+        id={id}
         editButton={
-          <div onClick={() => navigate(`/post/${id}/edit`)}>
-            <Icon
-              id="fa-pencil-square-o"
-              size="20px"
-              margin="0 px 0 0px"
+          <Icon
+            id="fa-pencil-square-o"
+            size="20px"
+            margin="0 px 0 0px"
+            onClick={() => navigate(`/post/${id}/edit`)}
 
-              // disabled={isSaveButtonSelected}
-            />
-          </div>
+            // disabled={isSaveButtonSelected}
+          />
         }
       />
 

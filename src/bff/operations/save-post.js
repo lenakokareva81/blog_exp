@@ -1,4 +1,4 @@
-import { setUserRole } from "../api";
+import { addPost, setUserRole } from "../api";
 import { updatePost } from "../api/update-post";
 import { ROLE } from "../constans";
 import { sessions } from "../sessions";
@@ -15,10 +15,13 @@ export const savePost = async (hash, newPostData) => {
     };
   }
 
-  const updatedPost = await updatePost(newPostData);
+  const savededPost =
+    newPostData.id === ""
+      ? await addPost(newPostData)
+      : await updatePost(newPostData);
 
   return {
     error: null,
-    res: updatedPost,
+    res: savededPost,
   };
 };

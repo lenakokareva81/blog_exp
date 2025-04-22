@@ -39,6 +39,7 @@ const CommentContainer = ({
         <div className="information-panel">
           <div className="autor">
             <Icon
+              inactive={true}
               id="fa fa-user-circle-o"
               size="18px"
               margin="0 10px 10px 10px"
@@ -50,6 +51,7 @@ const CommentContainer = ({
             {/* <div onClick={() => onNew(userId, selectedRoleId)}> */}
             {publishedAt}
             <Icon
+              inactive={true}
               id="fa-calendar-o"
               size="18px"
               margin=" 0px  0 0px 10px"

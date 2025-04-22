@@ -1,31 +1,56 @@
 import styled from "styled-components";
 import { Icon } from "../../../../components";
+import { useDispatch } from "react-redux";
+import { CLOSE_MODAL, openModal, removePostAsync } from "../../../../actions";
+import { useServerRequest } from "../../../../hooks";
+import { useNavigate } from "react-router-dom";
 
-const SpecialPanelContainer = ({ className, registeredAt,editButton }) => {
+const SpecialPanelContainer = ({ className, id, registeredAt, editButton }) => {
+  const dispatch = useDispatch();
+  const requestServer = useServerRequest();
+  const navigate = useNavigate();
+
+  const onPostRemove = (id) => {
+    dispatch(
+      openModal({
+        text: "Удалить статью?",
+        onConfirm: () => {
+          dispatch(removePostAsync(requestServer, id)).then(() => {
+            navigate("/");
+          });
+          dispatch(CLOSE_MODAL);
+        },
+
+        onCancel: () => dispatch(CLOSE_MODAL),
+      })
+    );
+  };
   return (
     <div className={className}>
       <div className="published-at">
-        {/* <div onClick={() => onRoleSave(userId, selectedRoleId)}> */}
-        <Icon
-          id="fa fa-calendar-o"
-          size="18px"
-          margin="0 10px 0 10px"
-          // disabled={isSaveButtonSelected}
-        />
-        {/* </div> */}
+        {registeredAt && (
+          <Icon
+            id="fa fa-calendar-o"
+            size="18px"
+            margin="0 10px 0 10px"
+            inactive={true}
+          />
+        )}
+
         {registeredAt}
       </div>
 
       <div className="buttons-panel">
-        <Icon
-          id="fa fa-trash-o"
-          size="20px"
-          margin="0 5px 0 0px"
+        {registeredAt && (
+          <Icon
+            id="fa fa-trash-o"
+            size="20px"
+            margin="0 5px 0 0px"
+            onClick={() => onPostRemove(id)}
+          />
+        )}
 
-          // disabled={isSaveButtonSelected}
-        />
         {editButton}
-        
       </div>
     </div>
   );
