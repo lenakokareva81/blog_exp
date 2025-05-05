@@ -50,9 +50,8 @@ const ControlPanelContainer = ({ className }) => {
         ) : (
           <>
             <UserName>{login}</UserName>
-            <div onClick={onLogout}>
-              <Icon id="fa fa-sign-out" margin="0 0 0 10px" />
-            </div>
+
+            <Icon id="fa fa-sign-out" margin="0 0 0 10px" onClick={onLogout} />
           </>
         )}
       </RightAligned>

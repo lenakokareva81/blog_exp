@@ -5,6 +5,7 @@ import { Header, Footer, Modal } from "./components";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions";
+import { Main } from "./pages/main/main";
 
 //json-server --watch src/db.json --port 3005
 
@@ -42,7 +43,7 @@ export const Blog = () => {
 
       <Page>
         <Routes>
-          <Route path="/" element={<div>главная страница</div>} />
+          <Route path="/" element={<Main />} />
           <Route path="/post" element={<Post />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/post/:id/edit" element={<Post />} />
