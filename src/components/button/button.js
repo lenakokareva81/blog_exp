@@ -16,4 +16,7 @@ export const Button = styled(ButtonContainer)`
   font-size: 18px;
   border: 1px solid #000;
   justify-content: space-evenly;
+  &:hover {
+    cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
+  }
 `;

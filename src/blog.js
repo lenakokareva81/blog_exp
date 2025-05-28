@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { Autorization, Registration, Users, Post } from "./pages";
 import styled from "styled-components";
-import { Header, Footer, Modal } from "./components";
+import { Header, Footer, Modal, Error } from "./components";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions";
 import { Main } from "./pages/main/main";
+import { ERROR } from "./constans/error";
 
 //json-server --watch src/db.json --port 3005
 
@@ -50,7 +51,7 @@ export const Blog = () => {
           <Route path="/login" element={<Autorization />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/users" element={<Users />} />
-          <Route path="*" element={<div>Ошибка</div>} />
+          <Route path="*" element={<Error error={ERROR.PAGE_NOT_EXIST} />} />
         </Routes>
       </Page>
       <Modal />

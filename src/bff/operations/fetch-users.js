@@ -4,9 +4,9 @@ import { ROLE } from "../constans";
 
 export const fetchUsers = async (hash) => {
   const accessRoles = [ROLE.ADMIN];
-  const acsess = await sessions.access(hash, accessRoles);
+  const access = await sessions.access(hash, accessRoles);
 
-  if (!acsess) {
+  if (!access) {
     return {
       error: "доступ запрещен",
       res: null,
