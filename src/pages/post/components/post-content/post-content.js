@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Icon } from "../../../../components";
 import { SpecialPanel } from "../special-panel/special-panel";
 import { useNavigate } from "react-router-dom";
+import { PROP_TYPE } from "../../../../constans";
 
 const PostContentContainer = ({
   className,
@@ -56,3 +57,6 @@ export const PostContent = styled(PostContentContainer)`
         }
   }
 `;
+PostContent.propTypes = {
+  post: PROP_TYPE.POST.isRequired,
+};

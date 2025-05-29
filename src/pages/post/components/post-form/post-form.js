@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Icon, Input } from "../../../../components";
 import { SpecialPanel } from "../special-panel/special-panel";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import { sanitizeContent } from "./utils";
 import { useDispatch } from "react-redux";
 import { savePostAsync } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
+import { PROP_TYPE } from "../../../../constans";
 
 const PostFormContainer = ({
   className,
@@ -98,3 +100,6 @@ export const PostForm = styled(PostFormContainer)`
     border: 1px solid black;
         }
 `;
+PostForm.propTypes = {
+  post: PROP_TYPE.POST.isRequired,
+};

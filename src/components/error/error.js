@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { H4 } from "../h4/h4";
+import { PROP_TYPE } from "../../constans";
 
 const ErrorContainer = ({ className, error }) => {
   return (
@@ -16,3 +17,6 @@ export const Error = styled(ErrorContainer)`
   font-size: 18px;
   width: 100%;
 `;
+Error.propTypes = {
+  error: PROP_TYPE.ERROR,
+};

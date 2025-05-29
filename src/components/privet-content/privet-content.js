@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import { H4 } from "../h4/h4";
+
 import { Error } from "../error/error";
 import { useSelector } from "react-redux";
 import { selectUserRole } from "../../selectors";
-import { ERROR } from "../../constans";
+import { ERROR, PROP_TYPE } from "../../constans";
 import { checkAccess } from "../../utils";
 
 const PrivetContentContainer = ({
@@ -25,3 +26,9 @@ export const PrivetContent = styled(PrivetContentContainer)`
   height: 20px;
   margin: 5px;
 `;
+
+PrivetContent.propTypes = {
+  children: PropTypes.node.isRequired,
+  access: PropTypes.arrayOf(PROP_TYPE.ROLE_ID).isRequired,
+  serverError: PROP_TYPE.ERROR,
+};

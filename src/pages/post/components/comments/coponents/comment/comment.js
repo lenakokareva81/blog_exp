@@ -1,12 +1,16 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Icon } from "../../../../../../components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   removeCommentAsync,
   openModal,
   CLOSE_MODAL,
 } from "../../../../../../actions";
 import { useServerRequest } from "../../../../../../hooks";
+import { selectUserRole } from "../../../../../../selectors";
+import { checkAccess } from "../../../../../../utils";
+import { ROLE } from "../../../../../../constans";
 
 const CommentContainer = ({
   className,
@@ -18,6 +22,11 @@ const CommentContainer = ({
 }) => {
   const dispatch = useDispatch();
   const requestserver = useServerRequest();
+  const userRole = useSelector(selectUserRole);
+  const isAdminorModerator = checkAccess(
+    [ROLE.ADMIN, ROLE.MODERATOR],
+    userRole
+  );
 
   const onCommentRemove = (id, postId) => {
     dispatch(
@@ -65,14 +74,16 @@ const CommentContainer = ({
         </div>
         <div className="comment-text">{content}</div>
       </div>
-      <div onClick={() => onCommentRemove(id, postId)}>
-        <Icon
-          id="fa fa-trash-o"
-          size="18px"
-          margin="0px 0px 0 10px"
-          // disabled={isSaveButtonSelected}
-        />
-      </div>
+      {isAdminorModerator && (
+        <div onClick={() => onCommentRemove(id, postId)}>
+          <Icon
+            id="fa fa-trash-o"
+            size="18px"
+            margin="0px 0px 0 10px"
+            // disabled={isSaveButtonSelected}
+          />
+        </div>
+      )}
     </div>
   );
 };
@@ -97,3 +108,10 @@ export const Comment = styled(CommentContainer)`
     display: flex;
   }
 `;
+Comment.propTypes = {
+  id: PropTypes.string,
+  author: PropTypes.string,
+  content: PropTypes.string,
+  publishedAt: PropTypes.string,
+  postId: PropTypes.string,
+};

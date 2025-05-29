@@ -6,9 +6,10 @@ import { Error, PrivetContent } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useServerRequest } from "../../hooks";
 import { loadPostAsync, RESET_POST_DATA } from "../../actions";
-import { selectPost } from "../../selectors";
+import { selectPost, selectUserRole } from "../../selectors";
 import { initialPostState } from "../../redusers/post-reducer";
 import { ROLE } from "../../constans";
+import { checkAccess } from "../../utils";
 
 const PostContainer = ({ className }) => {
   const [error, setError] = useState(false);

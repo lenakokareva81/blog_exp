@@ -15,10 +15,10 @@
       "role_id": 1
     },
     {
-      "id": "d542",
-      "login": "ivan2",
+      "id": "9c6b",
+      "login": "petr",
       "password": "qwe123",
-      "registed_at": "1970-01-24 06:42",
+      "registed_at": "1970-01-25 00:57",
       "role_id": 2
     }
   ],
@@ -224,6 +224,27 @@
       "post_id": "003",
       "content": "mmmm",
       "published_at": "1970-02-01 04:41"
+    },
+    {
+      "id": "7039",
+      "autor_id": "9c6b",
+      "post_id": "003",
+      "content": "комментарий от петра",
+      "published_at": "1970-02-04 13:57"
+    },
+    {
+      "id": "8bd4",
+      "autor_id": "9c6b",
+      "post_id": "003",
+      "content": "hghgh",
+      "published_at": "1970-01-31 19:00"
+    },
+    {
+      "id": "6960",
+      "autor_id": "001",
+      "post_id": "e4b9",
+      "content": "тодлжутдлавы",
+      "published_at": "1970-01-25 18:06"
     }
   ],
   "sessions": [
@@ -296,6 +317,39 @@
     {
       "id": "06af",
       "hash": "0.67295086048906638254152312583755701780319213867188",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "roleId": 0,
+        "password": "qwe123",
+        "registeredAt": "2025-05-21"
+      }
+    },
+    {
+      "id": "efee",
+      "hash": "0.64928063173830075083259316670591942965984344482422",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "roleId": 0,
+        "password": "qwe123",
+        "registeredAt": "2025-05-21"
+      }
+    },
+    {
+      "id": "8844",
+      "hash": "0.26694202486599793999744179018307477235794067382813",
+      "user": {
+        "id": "001",
+        "login": "anton",
+        "roleId": 0,
+        "password": "qwe123",
+        "registeredAt": "2025-05-21"
+      }
+    },
+    {
+      "id": "c90d",
+      "hash": "0.33674485355294625499311678140657022595405578613281",
       "user": {
         "id": "001",
         "login": "anton",
