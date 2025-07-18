@@ -23,8 +23,6 @@ const PostContentContainer = ({
             size="20px"
             margin="0 px 0 0px"
             onClick={() => navigate(`/post/${id}/edit`)}
-
-            // disabled={isSaveButtonSelected}
           />
         }
       />
@@ -40,6 +38,8 @@ export const PostContent = styled(PostContentContainer)`
 
     & img {
     float: left;
+    width:278px;
+    height:150px;
     margin: 0 20px 20px 0;}
 
     & .special-panel {
